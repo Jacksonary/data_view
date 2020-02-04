@@ -1,4 +1,6 @@
 target/**
 
 ### IntelliJ IDEA ###
-*.iml
+data_view.iml
+.mvn
+.idea
