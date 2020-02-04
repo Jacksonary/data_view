@@ -1,0 +1,111 @@
+## 1. 云托管方式（注意名字）
+#replicatedServersConfig:
+#  # 连接空闲超时，默认值10000，如果当前连接池里的连接数量超过了最小空闲连接数，同时有连接空闲时间超过了该数值，那这些连接将会自动被关闭，并从连接池里去掉
+#  idleConnectionTimeout: 10000
+#  pingTimeout: 1000
+#  # 连接超时，默认10000，同任何节点建立连接时的等待超时
+#  connectTimeout: 10000
+#  # 命令等待超时
+#  timeout: 3000
+#  # 命令失败重试次数，如果命令尝试次数超过该值仍然不能发送至某个指定的节点时，将抛出错误。如果尝试在此限制之内发送成功，则开始启用 timeout（命令等待超时） 计时
+#  retryAttempts: 3
+#  # 命令重试发送时间间隔
+#  retryInterval: 1500
+#  # 当与某个节点的连接断开时，等待与其重新建立连接的时间间隔
+#  reconnectionTimeout: 3000
+#  # 执行失败最大次数，在某个节点执行相同或不同命令时，连续失败次数大于该数值时，该节点将被从可用节点列表里清除，直到 reconnectionTimeout 超时以后再次尝试
+#  failedAttempts: 3
+#  password: 123456
+#  # 单个连接最大订阅数量
+#  subscriptionsPerConnection: 5
+#  # 客户端名称，在Redis节点里显示的客户端名称
+#  clientName: null
+#  # 负载均衡算法类的选择，多Redis服务节点的环境里有3种可选：
+#  # org.redisson.connection.balancer.WeightedRoundRobinBalancer - 权重轮询调度算法
+#  # org.redisson.connection.balancer.RoundRobinLoadBalancer - 轮询调度算法（默认）
+#  # org.redisson.connection.balancer.RandomLoadBalancer - 随机调度算法
+#  loadBalancer: org.redisson.connection.balancer.RoundRobinLoadBalancer
+#  # slave用于发布和订阅连接的最小保持连接数（长连接），默认值1。Redisson内部经常通过发布和订阅来实现许多功能。长期保持一定数量的发布订阅连接是必须的
+#  slaveSubscriptionConnectionMinimumIdleSize: 1
+#  # slave的发布和订阅连接池大小，默认50,连接池的连接数量自动弹性伸缩
+#  slaveSubscriptionConnectionPoolSize: 50
+#  # slave的最小空闲连接数
+#  slaveConnectionMinimumIdleSize: 32
+#  # slave的连接池大小，默认64，连接池的连接数量自动弹性伸缩
+#  slaveConnectionPoolSize: 64
+#  # mater的最小空闲连接数
+#  masterConnectionMinimumIdleSize: 32
+#  # mater的连接池大小
+#  masterConnectionPoolSize: 64
+#  # 读取操作的负载均衡模式：SLAVE-只在从服务节点里读取，MASTER-只在主服务节点里读取，MASTER_SLAVE-在主、从服务节点里都可以读取
+#  readMode: "SLAVE"
+#  # 节点地址，通过host:port的格式来指定云托管模式的多个Redis集群节点的地址
+#  nodeAddresses:
+#    - "redis://127.0.0.1:6379"
+#    - "redis://127.0.0.1:6380"
+#  # 主节点变化扫描间隔时间,对主节点变化节点状态扫描的时间间隔
+#  scanInterval: 1000
+## 线程池数量，默认=当前处理核数量*2，该线程池数量被所有RTopic对象监听器，RRemoteService调用者和RExecutorService任务共同共享
+#threads: 0
+## Netty线程池数量，默认=当前处理核数量*2，该线程池数量是在一个Redisson实例内，被其创建的所有分布式数据类型和服务，以及底层客户端所一同共享的线程池里保存的线程数量
+#nettyThreads: 0
+## 编码，Redisson的对象编码类是用于将对象进行序列化和反序列化，以实现对该对象在Redis里的读取和存储，默认JsonJacksonCodec
+#codec: org.redisson.codec.JsonJacksonCodec
+## 传输模式，可选：NIO（默认）、EPOLL（需要依赖里有netty-transport-native-epoll包 Linux）、KQUEUE（需要依赖里有 netty-transport-native-kqueue包（macOS）
+#transportMode:"NIO"
+
+# 1. 单节点
+#singleServerConfig:
+#  idleConnectionTimeout: 10000
+#  pingTimeout: 1000
+#  connectTimeout: 10000
+#  timeout: 3000
+#  retryAttempts: 3
+#  retryInterval: 1500
+#  reconnectionTimeout: 3000
+#  failedAttempts: 3
+#  password: 123456
+#  subscriptionsPerConnection: 5
+#  clientName: null
+#  address: "redis://127.0.0.1:6379"
+#  subscriptionConnectionMinimumIdleSize: 1
+#  subscriptionConnectionPoolSize: 50
+#  connectionMinimumIdleSize: 32
+#  connectionPoolSize: 64
+#  database: 5
+##  dnsMonitoring: false
+##  dnsMonitoringInterval: 5000
+#threads: 0
+#nettyThreads: 0
+#codec: !<org.redisson.codec.JsonJacksonCodec> {}
+#transportMode: NIO
+
+# 2. 主从节点
+masterSlaveServersConfig:
+  idleConnectionTimeout: 10000
+  pingTimeout: 1000
+  connectTimeout: 10000
+  timeout: 3000
+  retryAttempts: 3
+  retryInterval: 1500
+  reconnectionTimeout: 3000
+  failedAttempts: 3
+  password: 123456
+  subscriptionsPerConnection: 5
+  clientName: null
+  loadBalancer: !<org.redisson.connection.balancer.RoundRobinLoadBalancer> {}
+  slaveSubscriptionConnectionMinimumIdleSize: 1
+  slaveSubscriptionConnectionPoolSize: 50
+  slaveConnectionMinimumIdleSize: 32
+  slaveConnectionPoolSize: 64
+  masterConnectionMinimumIdleSize: 32
+  masterConnectionPoolSize: 64
+  readMode: "SLAVE"
+  slaveAddresses:
+    - "redis://127.0.0.1:6380"
+  masterAddress: "redis://127.0.0.1:6379"
+  database: 0
+threads: 0
+nettyThreads: 0
+codec: !<org.redisson.codec.JsonJacksonCodec> {}
+"transportMode": "NIO"
