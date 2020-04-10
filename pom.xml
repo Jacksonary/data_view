@@ -140,11 +140,11 @@
         </dependency>
 
         <!-- kafka-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.kafka</groupId>-->
-<!--            <artifactId>spring-kafka</artifactId>-->
-<!--            <version>${spring-kafka.version}</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.kafka</groupId>-->
+        <!--            <artifactId>spring-kafka</artifactId>-->
+        <!--            <version>${spring-kafka.version}</version>-->
+        <!--        </dependency>-->
 
     </dependencies>
 
@@ -221,6 +221,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
+                <!--配置tag的格式-->
+                <configuration>
+                    <tagNameFormat>v-test-@{project.version}</tagNameFormat>
+                </configuration>
             </plugin>
         </plugins>
     </build>
