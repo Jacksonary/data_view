@@ -221,7 +221,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <!--配置tag的格式-->
+                <!--配置tag的格式，支持的占位符有 project.groupId、project.artifactId、project.version -->
                 <configuration>
                     <tagNameFormat>v-test-@{project.version}</tagNameFormat>
                 </configuration>
