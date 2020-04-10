@@ -5,5 +5,5 @@ data_view.iml
 .mvn
 .idea
 
-pom.xml.releaseBackup
-release.properties
+#pom.xml.releaseBackup
+#release.properties
