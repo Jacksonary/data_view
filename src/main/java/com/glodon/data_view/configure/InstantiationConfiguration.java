@@ -6,8 +6,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.kafka.clients.admin.NewTopic;
-import org.apache.kafka.common.config.TopicConfig;
+//import org.apache.kafka.clients.admin.NewTopic;
+//import org.apache.kafka.common.config.TopicConfig;
 import org.redisson.config.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +19,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
 import com.bimface.sdk.BimfaceClient;
-import org.springframework.kafka.config.TopicBuilder;
+//import org.springframework.kafka.config.TopicBuilder;
 
 /**
  * @author liuwg-a
@@ -67,16 +67,16 @@ public class InstantiationConfiguration {
      *
      * @return NewTopic
      */
-    @Bean("noBlockingSpringKafkaTopic")
-    public NewTopic createNoBlockingSpringKafkaTopic() {
-        return TopicBuilder.name("spring-kafka-no-blocking-test").partitions(10).replicas(3).config(TopicConfig.COMPRESSION_TYPE_CONFIG,
-                                                                                                    "zstd").build();
-    }
-
-    @Bean("blockingSpringKafkaTopic")
-    public NewTopic createBlockingSpringKafkaTopic() {
-        return TopicBuilder.name("spring-kafka-blocking-test").partitions(10).replicas(3).config(TopicConfig.COMPRESSION_TYPE_CONFIG,
-                                                                                                 "zstd").build();
-    }
+//    @Bean("noBlockingSpringKafkaTopic")
+//    public NewTopic createNoBlockingSpringKafkaTopic() {
+//        return TopicBuilder.name("spring-kafka-no-blocking-test").partitions(10).replicas(3).config(TopicConfig.COMPRESSION_TYPE_CONFIG,
+//                                                                                                    "zstd").build();
+//    }
+//
+//    @Bean("blockingSpringKafkaTopic")
+//    public NewTopic createBlockingSpringKafkaTopic() {
+//        return TopicBuilder.name("spring-kafka-blocking-test").partitions(10).replicas(3).config(TopicConfig.COMPRESSION_TYPE_CONFIG,
+//                                                                                                 "zstd").build();
+//    }
 
 }

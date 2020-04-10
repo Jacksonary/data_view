@@ -23,9 +23,15 @@
         <mybatis-spring.version>2.1.1</mybatis-spring.version>
         <spring-kafka.version>2.3.4.RELEASE</spring-kafka.version>
         <bimface.version>2.0.1</bimface.version>
+        <task.version>refactor-SNAPSHOT</task.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.goujianwu</groupId>
+            <artifactId>task-internal-api</artifactId>
+            <version>${task.version}</version>
+        </dependency>
         <!--spring-boot-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -104,7 +110,6 @@
             <version>${swagger2.version}</version>
         </dependency>
 
-
         <!--redisson-->
         <dependency>
             <groupId>org.redisson</groupId>
@@ -135,13 +140,31 @@
         </dependency>
 
         <!-- kafka-->
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
-            <version>${spring-kafka.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.kafka</groupId>-->
+<!--            <artifactId>spring-kafka</artifactId>-->
+<!--            <version>${spring-kafka.version}</version>-->
+<!--        </dependency>-->
 
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>packages-release</name>
+            <url>https://packages.glodon.com/artifactory/maven-goujianku-releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>packages-snapshots</name>
+            <url>https://packages.glodon.com/artifactory/maven-goujianku-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <scm>
+        <developerConnection>scm:git:ssh://git@github.com:Jacksonary/data_view.git
+        </developerConnection>
+    </scm>
 
     <build>
         <plugins>

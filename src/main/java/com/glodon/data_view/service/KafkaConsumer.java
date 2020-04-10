@@ -2,11 +2,11 @@ package com.glodon.data_view.service;
 
 import java.util.Optional;
 
-import org.apache.kafka.clients.consumer.Consumer;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
+//import org.apache.kafka.clients.consumer.Consumer;
+//import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.kafka.annotation.KafkaListener;
+//import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 /**
@@ -25,25 +25,25 @@ public class KafkaConsumer {
     /**
      * 注解 @KafkaListener 会促使 Spring Kafka 自动创建一个消息容器
      */
-    @KafkaListener(topics = NO_BLOCKING_SPRING_KAFKA_TOPIC_STR, groupId = NO_BLOCKING_SPRING_KAFKA_TOPIC_STR)
-    public void receiveNoBlocking(ConsumerRecord<String, String> record) {
-        Optional<String> kafkaMessage = Optional.ofNullable(record.value());
-        if (kafkaMessage.isPresent()) {
-            Object message = kafkaMessage.get();
-            logger.info("kafka consumer： receive message -> record = {}", record);
-            logger.info("kafka consumer： receive message -> message = {}", message);
-        }
-
-    }
-
-    @KafkaListener(topics = BLOCKING_SPRING_KAFKA_TOPIC_STR, groupId = BLOCKING_SPRING_KAFKA_TOPIC_STR)
-    public void receiveBlocking(ConsumerRecord<String, String> record) {
-        Optional<String> kafkaMessage = Optional.ofNullable(record.value());
-        if (kafkaMessage.isPresent()) {
-            Object message = kafkaMessage.get();
-            logger.info("kafka consumer： receive message -> record = {}", record);
-            logger.info("kafka consumer： receive message -> message = {}", message);
-        }
-    }
+//    @KafkaListener(topics = NO_BLOCKING_SPRING_KAFKA_TOPIC_STR, groupId = NO_BLOCKING_SPRING_KAFKA_TOPIC_STR)
+//    public void receiveNoBlocking(ConsumerRecord<String, String> record) {
+//        Optional<String> kafkaMessage = Optional.ofNullable(record.value());
+//        if (kafkaMessage.isPresent()) {
+//            Object message = kafkaMessage.get();
+//            logger.info("kafka consumer： receive message -> record = {}", record);
+//            logger.info("kafka consumer： receive message -> message = {}", message);
+//        }
+//
+//    }
+//
+//    @KafkaListener(topics = BLOCKING_SPRING_KAFKA_TOPIC_STR, groupId = BLOCKING_SPRING_KAFKA_TOPIC_STR)
+//    public void receiveBlocking(ConsumerRecord<String, String> record) {
+//        Optional<String> kafkaMessage = Optional.ofNullable(record.value());
+//        if (kafkaMessage.isPresent()) {
+//            Object message = kafkaMessage.get();
+//            logger.info("kafka consumer： receive message -> record = {}", record);
+//            logger.info("kafka consumer： receive message -> message = {}", message);
+//        }
+//    }
 
 }
