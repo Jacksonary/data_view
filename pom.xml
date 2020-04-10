@@ -23,7 +23,7 @@
         <mybatis-spring.version>2.1.1</mybatis-spring.version>
         <spring-kafka.version>2.3.4.RELEASE</spring-kafka.version>
         <bimface.version>2.0.1</bimface.version>
-        <task.version>refactor-SNAPSHOT</task.version>
+        <task.version>0.0.1-SNAPSHOT</task.version>
     </properties>
 
     <dependencies>
