@@ -162,8 +162,7 @@
     </distributionManagement>
 
     <scm>
-        <developerConnection>scm:git:ssh://git@github.com:Jacksonary/data_view.git
-        </developerConnection>
+        <developerConnection>scm:git:ssh://git@github.com:Jacksonary/data_view.git</developerConnection>
     </scm>
 
     <build>
