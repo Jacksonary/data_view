@@ -4,3 +4,6 @@ target/**
 data_view.iml
 .mvn
 .idea
+
+pom.xml.releaseBackup
+release.properties
