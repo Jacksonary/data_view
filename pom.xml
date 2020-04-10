@@ -210,6 +210,18 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <!-- 一键更新子模块版本号 maven-release-plugin、versions-maven-plugin -->
+            <!--            <plugin>-->
+            <!--                <groupId>org.codehaus.mojo</groupId>-->
+            <!--                <artifactId>versions-maven-plugin</artifactId>-->
+            <!--                <configuration>-->
+            <!--                    <generateBackupPoms>false</generateBackupPoms>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
 
